@@ -1,0 +1,8 @@
+<h1>Newsletters</h1>
+<ol>
+  <% @newsletters.each do |newsletter| %>
+    <li>
+      <%= newsletter.title %> (Frequency: <%= newsletter.frequency %>)
+    </li>
+  <% end %>
+</ol>

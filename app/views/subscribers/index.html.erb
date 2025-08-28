@@ -1,0 +1,8 @@
+<h1>Subscribers</h1>
+<ol>
+  <% @subscribers.each do |subscriber| %>
+    <li>
+      <%= subscriber.email %> (<%= subscriber.name %>)
+    </li>
+  <% end %>
+</ol>
