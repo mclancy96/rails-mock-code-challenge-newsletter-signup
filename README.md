@@ -1,7 +1,7 @@
 
-# Rails Mock Code Challenge: Newsletter Signup
+# Rails Code Challenge
 
-Test your Rails skills by building a simple newsletter signup and delivery platform! In this scenario, your company wants to manage subscribers, send newsletters, and track delivery logs.
+It's time to put our Rails know-how to the test. HQ wants to connect with its community, and our execs have made an important decision to launch a new newsletter initiative! We are tasked with building a platform to manage subscribers and newsletters.
 
 ## Objectives
 
@@ -18,31 +18,26 @@ Before you begin, fork and clone this repo, run `bundle install` and `bin/rails 
 
 ## The Domain
 
-The company wants to manage a list of subscribers and send out newsletters. Each subscriber has an `email` and a `name`. Each newsletter has a `title` and a `frequency` (e.g., weekly, monthly). Delivery logs track when a newsletter was sent to a subscriber, with a `sent_at` timestamp and a `status` (e.g., delivered, bounced).
+Everyone is so busy in BT! But the new newsletter initiative at Power is a BIG DEAL. Marketing Communications is preparing a Power newsletter logo, and there has been talk of an upcoming newsletter launch party amongst the Special Events Coordinators.
+
+We need a way to keep track of which subscribers are signed up for each newsletter. It looks like another Nitro Developer has already started building our application. We have models for `Subscriber` and `Newsletter`. But we need a way to associate subscribers with newsletters.
+
+We have several newsletters and each subscriber could potentially sign up for many newsletters. Each newsletter can have many subscribers.
 
 ## Instructions / Deliverables
 
 Read through the instructions to get a sense of the scope of this code challenge, and then tackle them one by one.
 
-1. Create the associations between models. You may need to alter the schema to get your code working. Once set up, you should be able to run `bin/rails db:seed` without errors, and confirm in a `bin/rails console` that subscribers, newsletters, and delivery logs have the correct relationships.
+1. Create the associations between models. You will have to alter the current schema to get your code working. Once you've set up your relationships properly, you will be able to run `bin/rails db:seed` without errors, and confirm in a `bin/rails console` that the subscribers and newsletters have been created with the proper relations.
 
-2. On the subscribers index page, a subscriber's `email` should link to their show page.
+2. On the newsletters index page, a newsletter's `title` should link to its show page.
 
-3. The subscriber show page should display the subscriber's email, name, and all newsletters they are subscribed to.
+3. The newsletter show page should include the newsletter's title, frequency (e.g., 'Weekly'), and all subscribers. Each subscriber's name should link to their show page.
 
-4. On the newsletter index page, a newsletter's title should link to its show page.
+4. On the subscribers index page, a subscriber's name should link to their show page.
 
-5. The newsletter show page should have its title, frequency, and display all subscribers.
+5. The subscriber show page should have their name, email, and display all of the newsletters they are subscribed to.
 
-6. One needs to be able to create a new subscriber in the app. A new subscriber requires an email and a name.
+6. One needs to be able to create a new subscriber in the app. A new subscriber requires a name, an email, and at least one newsletter to subscribe to.
 
-7. Delivery logs should track when a newsletter was sent to a subscriber, with a sent_at timestamp and a status.
-
-## Submission
-
-Do not push your changes up to Github. When you finish:
-
-1. If you haven't already, create a custom branch with `git checkout -b custom_branch`.
-1. `git add` and `git commit` your changes.
-1. From you custom branch, run `git format-patch master --stdout > your_name.patch`, replacing `your_name` with your first and last name.
-1. Send the patch file to your instructor on Connect before the specified time. Remember, you can use `open .` to launch a Finder window from your current directory, and then drag your file into Connect.
+7. A subscriber must have a valid email address and a name present.

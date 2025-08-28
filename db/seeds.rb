@@ -1,29 +1,31 @@
-HousePlant.destroy_all
-Room.destroy_all
+# Reset the database
+Subscriber.destroy_all
+Newsletter.destroy_all
 
-rooms = [
-  { name: "Power Code Academy Classroom", occupancy: 7 },
-  { name: "Atlanta", occupancy: 12 },
-  { name: "Cincinnati", occupancy: 9 },
-  { name: "Reading", occupancy: 11 },
-  { name: "Executive Boardroom", occupancy: 22 }
+# Create Newsletters
+newsletters = [
+  { title: "Power Weekly", frequency: "Weekly" },
+  { title: "Monthly Digest", frequency: "Monthly" },
+  { title: "Special Announcements", frequency: "Occasional" },
+  { title: "Tech Tips", frequency: "Weekly" },
+  { title: "Events Update", frequency: "Monthly" }
 ]
 
-rooms.each { |room_attributes| Room.create(room_attributes) }
+newsletters = newsletters.map { |attrs| Newsletter.create!(attrs) }
 
-house_plants = [
-  { plant_type: "Spider plant", height: 12 },
-  { plant_type: "Devil's ivy", height: 18 },
-  { plant_type: "Jade plant", height: 5 },
-  { plant_type: "Sword fern", height: 8 },
-  { plant_type: "Rubber fig", height: 21 },
-  { plant_type: "Fiddle-leaf fig", height: 17 }
+# Create Subscribers
+subscribers = [
+  { name: "Alex Johnson", email: "alex.johnson@example.com" },
+  { name: "Morgan Lee", email: "morgan.lee@example.com" },
+  { name: "Taylor Smith", email: "taylor.smith@example.com" },
+  { name: "Jordan Kim", email: "jordan.kim@example.com" },
+  { name: "Casey Patel", email: "casey.patel@example.com" }
 ]
 
-house_plants = house_plants.map do |plant_attributes|
-  plant_attributes.merge(room_id: Room.all.sample.id)
-end
+subscribers = subscribers.map { |attrs| Subscriber.create!(attrs) }
 
-house_plants.each do |plant_attributes|
-  HousePlant.create(plant_attributes)
+# Associate Subscribers with Newsletters (many-to-many)
+subscribers.each do |subscriber|
+  # Each subscriber gets 2-4 random newsletters
+  subscriber.newsletters << newsletters.sample(rand(2..4))
 end
